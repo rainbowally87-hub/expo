@@ -165,11 +165,12 @@ async function testAsync(
   const stopLogCollectionController = new AbortController();
 
   try {
-    console.log(`\n📱 Starting Device - name[${TARGET_DEVICE}] udid[${deviceId}]`);
+    console.time(`\n📱 Starting Device - name[${TARGET_DEVICE}] udid[${deviceId}]`);
     await spawnAsync('xcrun', ['simctl', 'boot', deviceId], { stdio: 'inherit' });
     await spawnAsync('open', ['-a', 'Simulator', '--args', '-CurrentDeviceUDID', deviceId], {
       stdio: 'inherit',
     });
+    console.timeEnd(`\n📱 Starting Device - name[${TARGET_DEVICE}] udid[${deviceId}]`);
 
     console.log(`\n🔌 Installing App - deviceId[${deviceId}] appBinaryPath[${appBinaryPath}]`);
     await spawnAsync('xcrun', ['simctl', 'install', deviceId, appBinaryPath], { stdio: 'inherit' });
