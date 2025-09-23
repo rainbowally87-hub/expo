@@ -165,6 +165,8 @@ async function testAsync(
   const stopLogCollectionController = new AbortController();
 
   try {
+    await spawnAsync('xcrun', ['simctl', 'erase', 'all']);
+    await spawnAsync('xcrun', ['simctl', 'shutdown', 'all']);
     console.log(`\n📱 Starting Device - name[${TARGET_DEVICE}] udid[${deviceId}]`);
     await spawnAsync('xcrun', ['simctl', 'bootstatus', deviceId, '-b'], { stdio: 'inherit' });
     await spawnAsync('open', ['-a', 'Simulator', '--args', '-CurrentDeviceUDID', deviceId], {
