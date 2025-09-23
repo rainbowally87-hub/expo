@@ -53,7 +53,7 @@ jobs:
           run-id: 17938999756
       - name: test simctl
         run: |
-          xcrun simctl devices --json
+          xcrun simctl list devices --json
           xcrun simctl delete unavailable
       - name: 🍺 Install Maestro
         run: |
