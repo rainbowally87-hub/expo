@@ -49,6 +49,7 @@ jobs:
         with:
           name: bare-expo-ios-builds
           path: apps/bare-expo/ios/build/BareExpo.app
+          github-token: ${{ github.token }}
           run-id: 17938999756
       - name: test simctl
         run: |
