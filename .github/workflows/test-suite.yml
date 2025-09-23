@@ -50,6 +50,10 @@ jobs:
           name: bare-expo-ios-builds
           path: apps/bare-expo/ios/build/BareExpo.app
           run-id: 17938999756
+      - name: test simctl
+        run: |
+          xcrun simctl devices --json
+          xcrun simctl delete unavailable
       - name: 🍺 Install Maestro
         run: |
           curl -Ls "https://get.maestro.mobile.dev" | bash
