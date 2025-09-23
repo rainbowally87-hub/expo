@@ -55,6 +55,7 @@ jobs:
         run: |
           xcrun simctl list devices --json
           xcrun simctl delete unavailable
+          xcrun simctl list devices --json
       - name: 🍺 Install Maestro
         run: |
           curl -Ls "https://get.maestro.mobile.dev" | bash
